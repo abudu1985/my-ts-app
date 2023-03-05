@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { CharactersListQuery } from "../../../generated/graphql";
 import useScroll from "../../../hooks/useScroll";
+import Spinner from "../../Spinner";
 
 const CharactersListStyled = styled.div`
   height: 100vh;
@@ -18,16 +19,43 @@ const CharactersListStyled = styled.div`
   }
 
   .item {
-    padding-top: 20px;
-    padding-bottom: 10px;
-    border-top: 1px solid #919191;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid cadetblue;
     cursor: pointer;
+    margin-bottom: 8px;
+  }
+  .active {
+    border: solid coral;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: cadetblue;
+    border-radius: 8px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2fb6b6;
   }
 `;
 
 export interface OwnProps {
   handleIdChange: (newId: string) => void;
   isLoading?: boolean;
+  activeId: string;
   loadMore?: () => void;
 }
 
@@ -40,14 +68,11 @@ const CharactersListComponent: React.FC<Props> = ({
   isLoading,
   handleIdChange,
   loadMore,
+  activeId,
 }) => {
   const parentRef = React.useRef<HTMLDivElement>(null);
   const childRef = React.useRef<HTMLDivElement>(null);
   const intersected = useScroll(parentRef, childRef, loadMore);
-
-  // if (isLoading) {
-  //   return <div>Loading...</div>;
-  // }
 
   return (
     <CharactersListStyled ref={parentRef}>
@@ -58,8 +83,10 @@ const CharactersListComponent: React.FC<Props> = ({
             (character, i) =>
               !!character && (
                 <li
-                  key={character.id}
-                  className="item"
+                  key={character.name}
+                  className={`item ${
+                    character.id === activeId ? "active" : ""
+                  }`}
                   onClick={() => handleIdChange(character.id!)}
                 >
                   {character.name} ({character.species})
@@ -67,7 +94,9 @@ const CharactersListComponent: React.FC<Props> = ({
               )
           )}
       </ol>
-      <div ref={childRef} style={{ height: 20, background: "green" }} />
+      <div ref={childRef}>
+        <Spinner />
+      </div>
     </CharactersListStyled>
   );
 };

@@ -63,7 +63,6 @@ const CharacterProfileStyled = styled.div`
     border-radius: 10px;
     justify-content: left;
     margin-top: 35px;
-
     border: solid cadetblue;
     padding: 15px 10px 10px;
     width: 95%;

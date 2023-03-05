@@ -20,7 +20,7 @@ const RickAndMorty: React.FC = () => {
 
   return (
     <RickAndMortyContainer>
-      <CharactersList handleIdChange={handleIdChange} />
+      <CharactersList handleIdChange={handleIdChange} activeId={id} />
       <CharacterProfile id={id} />
       <div>hello</div>
     </RickAndMortyContainer>

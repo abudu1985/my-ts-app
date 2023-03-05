@@ -1,40 +1,39 @@
 import * as React from "react";
-import { useLazyQuery } from "@apollo/client";
 import CharactersListComponent, { OwnProps } from "./CharactersListComponent";
-import { QUERY_CHARACTERS_LIST } from "./query";
+
+import { useCharactersListQuery } from "../../../generated/graphql";
 
 const CharactersList: React.FC<OwnProps> = (props) => {
   const [pageNumber, setPageNumber] = React.useState(1);
 
-  const [getCharacters, { loading, data, error }] = useLazyQuery(
-    QUERY_CHARACTERS_LIST
-  );
+  const { data, error, loading, refetch } = useCharactersListQuery({
+    variables: { page: pageNumber },
+  });
 
   const [characters, setCharacters] = React.useState(data);
 
   React.useEffect(() => {
-    getCharacters({ variables: { page: pageNumber } });
+    refetch({ page: pageNumber }).then(({ data }) => {
+      setCharacters(data);
+    });
   }, []);
 
-  React.useEffect(() => {
-    if (data?.characters) {
+  const loadMore = React.useCallback(() => {
+    const newPageNumber = pageNumber + 1;
+
+    refetch({ page: newPageNumber }).then(({ data }) => {
       const newCharacters = {
         characters: {
           results: characters?.characters?.results
-            ? [...characters.characters.results, ...data.characters.results]
-            : data.characters.results,
+            ? [...characters?.characters.results, ...data?.characters?.results!]
+            : data?.characters?.results,
         },
       };
-      setCharacters(newCharacters);
-    }
-  }, [data]);
 
-  const loadMore = React.useCallback(() => {
-    console.log("qwe QWE");
-    const newPageNumber = pageNumber + 1;
-    getCharacters({ variables: { page: newPageNumber } });
-    setPageNumber(newPageNumber);
-  }, [setPageNumber, pageNumber]);
+      setCharacters(newCharacters);
+      setPageNumber(newPageNumber);
+    });
+  }, [setPageNumber, pageNumber, characters]);
 
   if (error || !data) {
     return <div>ERROR</div>;
@@ -43,7 +42,7 @@ const CharactersList: React.FC<OwnProps> = (props) => {
   return (
     <CharactersListComponent
       {...props}
-      data={characters}
+      data={characters!}
       loadMore={loadMore}
       isLoading={!!loading}
     />
