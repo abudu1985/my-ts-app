@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import CharactersList from "./components/RickAndMorty/CharactersList";
+import CharacterProfile from "./components/RickAndMorty/CharacterProfile";
+import RickAndMorty from "./components/RickAndMorty";
 
-function App() {
+import Todo from "./components/Todo";
+
+const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RickAndMorty />
+      {/* <CharactersList handleIdChange={handleIdChange} />
+      <CharacterProfile id={id} /> */}
+      {/* <Todo /> */}
     </div>
   );
-}
+};
 
 export default App;
