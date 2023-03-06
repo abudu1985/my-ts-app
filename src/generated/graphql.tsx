@@ -201,12 +201,26 @@ export type QueryLocationsByIdsArgs = {
   ids: Array<Scalars['ID']>;
 };
 
+export type EpisodeQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type EpisodeQuery = { __typename?: 'Query', episode?: { __typename?: 'Episode', episode?: string | null, name?: string | null, air_date?: string | null, characters: Array<{ __typename?: 'Character', name?: string | null, id?: string | null } | null> } | null };
+
+export type LocationQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type LocationQuery = { __typename?: 'Query', location?: { __typename?: 'Location', name?: string | null, dimension?: string | null, type?: string | null, residents: Array<{ __typename?: 'Character', name?: string | null, id?: string | null } | null> } | null };
+
 export type CharacterProfileQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type CharacterProfileQuery = { __typename?: 'Query', character?: { __typename?: 'Character', name?: string | null, status?: string | null, species?: string | null, gender?: string | null, image?: string | null, type?: string | null, origin?: { __typename?: 'Location', name?: string | null } | null, location?: { __typename?: 'Location', name?: string | null } | null, episode: Array<{ __typename?: 'Episode', episode?: string | null } | null> } | null };
+export type CharacterProfileQuery = { __typename?: 'Query', character?: { __typename?: 'Character', name?: string | null, status?: string | null, species?: string | null, gender?: string | null, image?: string | null, type?: string | null, origin?: { __typename?: 'Location', name?: string | null } | null, location?: { __typename?: 'Location', name?: string | null, id?: string | null } | null, episode: Array<{ __typename?: 'Episode', episode?: string | null, id?: string | null } | null> } | null };
 
 export type CharactersListQueryVariables = Exact<{
   page: Scalars['Int'];
@@ -216,6 +230,88 @@ export type CharactersListQueryVariables = Exact<{
 export type CharactersListQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', results?: Array<{ __typename?: 'Character', name?: string | null, status?: string | null, species?: string | null, gender?: string | null, id?: string | null } | null> | null } | null };
 
 
+export const EpisodeDocument = gql`
+    query Episode($id: ID!) {
+  episode(id: $id) {
+    episode
+    name
+    air_date
+    characters {
+      name
+      id
+    }
+  }
+}
+    `;
+
+/**
+ * __useEpisodeQuery__
+ *
+ * To run a query within a React component, call `useEpisodeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useEpisodeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useEpisodeQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useEpisodeQuery(baseOptions: Apollo.QueryHookOptions<EpisodeQuery, EpisodeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<EpisodeQuery, EpisodeQueryVariables>(EpisodeDocument, options);
+      }
+export function useEpisodeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<EpisodeQuery, EpisodeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<EpisodeQuery, EpisodeQueryVariables>(EpisodeDocument, options);
+        }
+export type EpisodeQueryHookResult = ReturnType<typeof useEpisodeQuery>;
+export type EpisodeLazyQueryHookResult = ReturnType<typeof useEpisodeLazyQuery>;
+export type EpisodeQueryResult = Apollo.QueryResult<EpisodeQuery, EpisodeQueryVariables>;
+export const LocationDocument = gql`
+    query Location($id: ID!) {
+  location(id: $id) {
+    name
+    dimension
+    type
+    residents {
+      name
+      id
+    }
+  }
+}
+    `;
+
+/**
+ * __useLocationQuery__
+ *
+ * To run a query within a React component, call `useLocationQuery` and pass it any options that fit your needs.
+ * When your component renders, `useLocationQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useLocationQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useLocationQuery(baseOptions: Apollo.QueryHookOptions<LocationQuery, LocationQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<LocationQuery, LocationQueryVariables>(LocationDocument, options);
+      }
+export function useLocationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LocationQuery, LocationQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<LocationQuery, LocationQueryVariables>(LocationDocument, options);
+        }
+export type LocationQueryHookResult = ReturnType<typeof useLocationQuery>;
+export type LocationLazyQueryHookResult = ReturnType<typeof useLocationLazyQuery>;
+export type LocationQueryResult = Apollo.QueryResult<LocationQuery, LocationQueryVariables>;
 export const CharacterProfileDocument = gql`
     query CharacterProfile($id: ID!) {
   character(id: $id) {
@@ -228,10 +324,12 @@ export const CharacterProfileDocument = gql`
     }
     location {
       name
+      id
     }
     image
     episode {
       episode
+      id
     }
     type
   }

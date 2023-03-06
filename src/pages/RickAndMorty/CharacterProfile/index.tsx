@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useCharacterProfileQuery } from "../../../generated/graphql";
+import { useCharacterProfileQuery } from "@/generated/graphql";
 import CharacterProfile from "./CharacterProfile";
 
 interface OwnProps {
@@ -10,6 +10,7 @@ const CharacterProfileContainer: React.FC<OwnProps> = ({ id }) => {
   const { data, error, loading, refetch } = useCharacterProfileQuery({
     variables: { id: String(id) },
   });
+
   React.useEffect(() => {
     refetch({ id: String(id) });
   }, [refetch, id]);

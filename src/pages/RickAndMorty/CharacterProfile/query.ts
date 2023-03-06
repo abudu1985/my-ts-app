@@ -12,10 +12,12 @@ export const QUERY_CHARACTER_PROFILE = gql`
       }
       location {
         name
+        id
       }
       image
       episode {
         episode
+        id
       }
       type
     }

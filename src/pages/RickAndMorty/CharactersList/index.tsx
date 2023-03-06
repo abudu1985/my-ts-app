@@ -1,7 +1,7 @@
 import * as React from "react";
 import CharactersListComponent, { OwnProps } from "./CharactersListComponent";
 
-import { useCharactersListQuery } from "../../../generated/graphql";
+import { useCharactersListQuery } from "@/generated/graphql";
 
 const CharactersList: React.FC<OwnProps> = (props) => {
   const [pageNumber, setPageNumber] = React.useState(1);
