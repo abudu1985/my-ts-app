@@ -1,5 +1,5 @@
 # my-ts-app
 small apps
 
-Todo
-Rick and Morty
+##Todo
+##Rick and Morty
