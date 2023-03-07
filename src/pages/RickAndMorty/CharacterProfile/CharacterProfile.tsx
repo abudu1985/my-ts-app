@@ -9,7 +9,12 @@ interface Props {
 }
 
 const CharacterProfile: React.FC<Props> = ({ data }) => {
-  const { dispatch } = React.useContext(AdditionalInfoContext);
+  const {
+    dispatch,
+    type,
+    id: itemId,
+  } = React.useContext(AdditionalInfoContext);
+
   React.useEffect(() => {
     if (data?.character?.location) {
       dispatch({
@@ -17,7 +22,35 @@ const CharacterProfile: React.FC<Props> = ({ data }) => {
         payload: data?.character?.location?.id!,
       });
     }
-  }, []);
+  }, [data]);
+
+  const clickOnEpisodeHandler = (id: string) => {
+    dispatch({
+      type: constants.SET_ADDITIONAL_INFO_EPISODE,
+      payload: id,
+    });
+  };
+
+  const clickOnLocationHandler = (id: string) => {
+    dispatch({
+      type: constants.SET_ADDITIONAL_INFO_LOCATION,
+      payload: id,
+    });
+  };
+
+  const getLocationClass = () => {
+    return `with-pointer ${
+      type === constants.SET_ADDITIONAL_INFO_LOCATION ? "active" : ""
+    }`;
+  };
+
+  const getEpisodeClass = (id: string) => {
+    return `badge ${
+      type === constants.SET_ADDITIONAL_INFO_EPISODE && id === itemId
+        ? "active"
+        : ""
+    }`;
+  };
 
   if (!data.character) {
     return <div>No character available</div>;
@@ -54,7 +87,15 @@ const CharacterProfile: React.FC<Props> = ({ data }) => {
         </div>
         <div className="info-row">
           <span>Location: </span>
-          {data.character.location?.name}
+          <span
+            className={getLocationClass()}
+            onClick={() =>
+              data?.character?.location?.id &&
+              clickOnLocationHandler(data?.character?.location?.id)
+            }
+          >
+            {data.character.location?.name}
+          </span>
         </div>
         <div className="info-row">
           <span>Origin: </span>
@@ -72,7 +113,12 @@ const CharacterProfile: React.FC<Props> = ({ data }) => {
         </div>
         {data?.character?.episode.length &&
           data.character.episode.map((item) => (
-            <span className="badge">{item?.episode}</span>
+            <span
+              className={getEpisodeClass(item?.id!)}
+              onClick={() => item?.id && clickOnEpisodeHandler(item?.id)}
+            >
+              {item?.episode}
+            </span>
           ))}
       </div>
     </CharacterProfileStyled>

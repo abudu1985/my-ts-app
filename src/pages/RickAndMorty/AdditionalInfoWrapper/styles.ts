@@ -1,41 +1,7 @@
 import styled from "styled-components";
 
-export const LocationComponentStyled = styled.div`
+export const AdditionalInfoComponentStyled = styled.div`
   padding: 10px 20px;
-
-  .main-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 450px;
-    justify-content: space-evenly;
-    font-size: 24px;
-    font-weight: 600;
-
-    .outter-badge {
-      position: relative;
-
-      .image {
-        max-width: 350px;
-      }
-    }
-
-    .inner-badge {
-      display: table;
-      position: absolute;
-      top: -15px;
-      right: -25px;
-      background-color: coral;
-      background-repeat: no-repeat;
-      background-size: cover;
-      text-align: center;
-    }
-    .inner-badge p {
-      display: table-cell;
-      vertical-align: middle;
-      padding: 6px;
-    }
-  }
 
   .additional-info {
     margin: 10px;
@@ -50,7 +16,7 @@ export const LocationComponentStyled = styled.div`
     }
   }
 
-  .residents-info {
+  .list-info {
     display: flex;
     flex-wrap: wrap;
     border-radius: 10px;

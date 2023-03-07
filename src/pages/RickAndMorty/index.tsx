@@ -9,7 +9,7 @@ import AdditionalInfoWrapper from "./AdditionalInfoWrapper";
 
 const RickAndMortyStyled = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 2fr 2fr;
   grid-gap: 10px;
   background-color: #ffff99;
   width: 100%;

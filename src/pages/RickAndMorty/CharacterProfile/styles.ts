@@ -7,7 +7,7 @@ export const CharacterProfileStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 450px;
+    height: 420px;
     justify-content: space-evenly;
     font-size: 24px;
     font-weight: 600;
@@ -77,6 +77,7 @@ export const CharacterProfileStyled = styled.div`
       text-align: center;
       border-radius: 5px;
       margin: 4px;
+      cursor: pointer;
     }
 
     h1 {
@@ -102,5 +103,14 @@ export const CharacterProfileStyled = styled.div`
     background: cadetblue;
     border-radius: 10px;
     padding: 2px 10px;
+  }
+
+  .with-pointer {
+    cursor: pointer;
+  }
+
+  .active {
+    color: coral !important;
+    font-weight: 600;
   }
 `;

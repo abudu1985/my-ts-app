@@ -15,7 +15,6 @@ export default function useScroll(
     };
     observer.current = new IntersectionObserver(([target]) => {
       if (target.isIntersecting) {
-        console.log("qwe intersected");
         if (callback) callback();
       }
     }, options);

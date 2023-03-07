@@ -10,9 +10,14 @@ const Location: React.FC<OwnProps> = ({ id }) => {
   const { data, error, loading, refetch } = useLocationQuery({
     variables: { id: String(id) },
   });
+
   React.useEffect(() => {
     refetch({ id: String(id) });
   }, [refetch, id]);
+
+  if (!id) {
+    return <div>Location unknown</div>;
+  }
 
   if (loading) {
     return <div>Loading...</div>;

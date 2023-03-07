@@ -1,25 +1,14 @@
 import React from "react";
 import { LocationQuery } from "@/generated/graphql";
-import { LocationComponentStyled } from "./styles";
+import { AdditionalInfoComponentStyled } from "../styles";
 
 interface Props {
   data: LocationQuery;
 }
 
 const LocationComponent: React.FC<Props> = ({ data }) => {
-  console.log("qwe  ~ data:", data);
-  // return <div>LocationComponent</div>;
-
-  // name
-  // dimension
-  // type
-  // residents {
-  //   name
-  //   id
-  // }
-
   return (
-    <LocationComponentStyled>
+    <AdditionalInfoComponentStyled>
       <div className="additional-info">
         <div className="info-row">
           <span>Location name: </span>
@@ -35,7 +24,7 @@ const LocationComponent: React.FC<Props> = ({ data }) => {
         </div>
       </div>
 
-      <div className="residents-info">
+      <div className="list-info">
         <div className="header">
           {`${data?.location?.residents.length} `}Residents
         </div>
@@ -44,7 +33,7 @@ const LocationComponent: React.FC<Props> = ({ data }) => {
             <span className="badge">{item?.name}</span>
           ))}
       </div>
-    </LocationComponentStyled>
+    </AdditionalInfoComponentStyled>
   );
 };
 
