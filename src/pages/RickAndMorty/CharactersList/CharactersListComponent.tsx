@@ -36,7 +36,7 @@ const CharactersListComponent: React.FC<Props> = ({
             (character, i) =>
               !!character && (
                 <li
-                  key={character.name}
+                  key={`${character.id}`}
                   className={`item ${
                     character.id === activeId ? "active" : ""
                   }`}

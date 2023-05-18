@@ -114,6 +114,7 @@ const CharacterProfile: React.FC<Props> = ({ data }) => {
         {data?.character?.episode.length &&
           data.character.episode.map((item) => (
             <span
+              key={item?.id}
               className={getEpisodeClass(item?.id!)}
               onClick={() => item?.id && clickOnEpisodeHandler(item?.id)}
             >

@@ -1,9 +1,11 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import App from "./App";
-
 import { relayStylePagination } from "@apollo/client/utilities";
+import App from "./App";
+import reportWebVitals from './components/Routes/reportWebVitals';
+import { AuthProvider } from './components/Routes/context/JWTContext';
 
 import "./index.css";
 
@@ -21,8 +23,14 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
+  <BrowserRouter>
+    <AuthProvider>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </AuthProvider>
+  </BrowserRouter>,
   document.getElementById("root")
 );
+
+reportWebVitals();

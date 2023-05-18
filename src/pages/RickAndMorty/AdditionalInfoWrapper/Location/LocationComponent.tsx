@@ -30,7 +30,7 @@ const LocationComponent: React.FC<Props> = ({ data }) => {
         </div>
         {data?.location?.residents.length &&
           data.location.residents.map((item) => (
-            <span className="badge">{item?.name}</span>
+            <span key={item?.id} className="badge">{item?.name}</span>
           ))}
       </div>
     </AdditionalInfoComponentStyled>
