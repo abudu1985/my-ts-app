@@ -1,6 +1,7 @@
 import * as React from "react";
-import { useCharacterProfileQuery } from "@/generated/graphql";
+import { useCharacterProfileQuery } from "../../../generated/graphql";
 import CharacterProfile from "./CharacterProfile";
+import Spinner from "../../../components/Spinner"
 
 interface OwnProps {
   id: string;
@@ -15,12 +16,8 @@ const CharacterProfileContainer: React.FC<OwnProps> = ({ id }) => {
     refetch({ id: String(id) });
   }, [refetch, id]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>ERROR</div>;
+  if (error || loading) {
+    return <Spinner/>;
   }
 
   if (!data) {

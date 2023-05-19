@@ -9,10 +9,18 @@ type NewTodoProps = {
 const NewTodo: React.FC<NewTodoProps> = (props) => {
   const textInputRef = useRef<HTMLInputElement>(null);
 
+  const validateInput = (input: string): boolean => {
+    if (input.length) return true;
+    return false;
+  };
+
   const todoSubmitHandler = (event: React.FormEvent) => {
     event.preventDefault();
     const enteredText = textInputRef.current!.value;
-    props.onAddTodo(enteredText);
+    if (validateInput(enteredText)) {
+      props.onAddTodo(enteredText);
+      textInputRef.current!.value = "";
+    }
   };
 
   return (

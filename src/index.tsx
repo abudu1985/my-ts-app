@@ -4,8 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { relayStylePagination } from "@apollo/client/utilities";
 import App from "./App";
-import reportWebVitals from './components/Routes/reportWebVitals';
-import { AuthProvider } from './components/Routes/context/JWTContext';
+import reportWebVitals from './components/RoutesInfrastructure/reportWebVitals';
+import { AuthProvider } from './components/RoutesInfrastructure/context/JWTContext';
 
 import "./index.css";
 

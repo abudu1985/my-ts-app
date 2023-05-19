@@ -1,6 +1,7 @@
 import * as React from "react";
-import { useEpisodeQuery } from "@/generated/graphql";
+import { useEpisodeQuery } from "../../../../generated/graphql";
 import EpisodeComponent from "./EpisodeComponent";
+import Spinner from "../../../../components/Spinner";
 
 interface OwnProps {
   id: string;
@@ -15,7 +16,7 @@ const Episode: React.FC<OwnProps> = ({ id }) => {
   }, [refetch, id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Spinner/>;
   }
 
   if (error) {

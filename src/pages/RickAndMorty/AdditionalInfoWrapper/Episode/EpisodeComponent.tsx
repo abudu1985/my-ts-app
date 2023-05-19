@@ -30,7 +30,7 @@ const EpisodeComponent: React.FC<Props> = ({ data }) => {
         </div>
         {data?.episode?.characters.length &&
           data?.episode?.characters.map((item) => (
-            <span className="badge">{item?.name}</span>
+            <span key={item?.id} className="badge">{item?.name}</span>
           ))}
       </div>
     </AdditionalInfoComponentStyled>

@@ -1,7 +1,7 @@
 import * as React from "react";
 import CharactersListComponent, { OwnProps } from "./CharactersListComponent";
-
-import { useCharactersListQuery } from "@/generated/graphql";
+import { useCharactersListQuery } from "../../../generated/graphql";
+import Spinner from "../../../components/Spinner";
 
 const CharactersList: React.FC<OwnProps> = (props) => {
   const [pageNumber, setPageNumber] = React.useState(1);
@@ -36,7 +36,7 @@ const CharactersList: React.FC<OwnProps> = (props) => {
   }, [setPageNumber, pageNumber, characters]);
 
   if (error || !data) {
-    return <div>ERROR</div>;
+    return <Spinner/>;
   }
 
   return (

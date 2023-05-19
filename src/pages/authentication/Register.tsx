@@ -10,7 +10,7 @@ import {
   Typography,
 } from '@mui/material';
 
-import RegisterJWT from '../../components/Routes/components/authentication/register';
+import RegisterJWT from '../../components/RoutesInfrastructure/components/authentication/register';
 
 const Register: FC = () => {
   return (

@@ -9,7 +9,7 @@ import {
   Link,
   Typography,
 } from '@mui/material';
-import LoginJWT from '../../components/Routes/components/authentication/login';
+import LoginJWT from '../../components/RoutesInfrastructure/components/authentication/login';
 
 const Login: FC = () => {
   return (

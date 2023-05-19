@@ -1,9 +1,9 @@
 import { Suspense, lazy } from 'react';
 import type { RouteObject } from 'react-router';
-import LoadingScreen from './components/Routes/components/LoadingScreen';
+import LoadingScreen from './components/RoutesInfrastructure/components/LoadingScreen';
 import MainLayout from './layout/MainLayout';
-import AuthGuard from './components/Routes/components/AuthGuard';
-import GuestGuard from './components/Routes/components/GuestGuard';
+import AuthGuard from './components/RoutesInfrastructure/components/AuthGuard';
+import GuestGuard from './components/RoutesInfrastructure/components/GuestGuard';
 
 const Loadable = (Component: any) => (props: JSX.IntrinsicAttributes) =>
   (
@@ -23,6 +23,8 @@ const Home = Loadable(lazy(() => import('./pages/home/Home')));
 
 //  * OTHER PAGES
 const RickAndMorty = Loadable(lazy(() => import('./pages/RickAndMorty')));
+const Todo = Loadable(lazy(() => import('./pages/Todo')));
+const ExpoPlatformInterview = Loadable(lazy(() => import('./pages/ExpoPlatformInterview')));
 
 const routes: RouteObject[] = [
   {
@@ -66,6 +68,22 @@ const routes: RouteObject[] = [
         element: (
           <GuestGuard>
             <RickAndMorty />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: 'todo',
+        element: (
+          <GuestGuard>
+            <Todo />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: 'expoPlatformInterview',
+        element: (
+          <GuestGuard>
+            <ExpoPlatformInterview />
           </GuestGuard>
         ),
       }

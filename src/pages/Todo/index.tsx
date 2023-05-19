@@ -8,8 +8,8 @@ const TodoApp: React.FC = () => {
 
   const todoAddHandler = (text: string) => {
     setTodos((prevTodos) => [
+      { id: Math.random().toString(), text: text, active: true },
       ...prevTodos,
-      { id: Math.random().toString(), text: text },
     ]);
   };
 
@@ -19,10 +19,23 @@ const TodoApp: React.FC = () => {
     });
   };
 
+  const toggleTodoHandler = (todoId: string) => {
+    let mapped = todos.map((todo) => {
+      return todo.id == todoId
+        ? { ...todo, active: !todo.active }
+        : { ...todo };
+    });
+    setTodos(mapped);
+  };
+
   return (
-    <div className="App">
+    <div className="">
       <NewTodo onAddTodo={todoAddHandler} />
-      <TodoList items={todos} onDeleteTodo={todoDeleteHandler} />
+      <TodoList
+        items={todos}
+        onDeleteTodo={todoDeleteHandler}
+        onToggleTodo={toggleTodoHandler}
+      />
     </div>
   );
 };

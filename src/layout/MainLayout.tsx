@@ -16,8 +16,8 @@ interface MainLayoutProps {
 
 const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   return <div>
- <Navbar/>
-<div>{children || <Outlet />}</div>
+    <Navbar/>
+    <div>{children || <Outlet />}</div>
   </div> ;
 };
 

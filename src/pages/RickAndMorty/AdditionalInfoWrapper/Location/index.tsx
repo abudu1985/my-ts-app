@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useLocationQuery } from "@/generated/graphql";
 import LocationComponent from "./LocationComponent";
-
+import Spinner from "../../../../components/Spinner";
 interface OwnProps {
   id: string;
 }
@@ -20,7 +20,7 @@ const Location: React.FC<OwnProps> = ({ id }) => {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
 
   if (error) {
