@@ -1,9 +1,9 @@
-import { Suspense, lazy } from 'react';
-import type { RouteObject } from 'react-router';
-import LoadingScreen from './components/RoutesInfrastructure/components/LoadingScreen';
-import MainLayout from './layout/MainLayout';
-import AuthGuard from './components/RoutesInfrastructure/components/AuthGuard';
-import GuestGuard from './components/RoutesInfrastructure/components/GuestGuard';
+import { Suspense, lazy } from "react";
+import type { RouteObject } from "react-router";
+import LoadingScreen from "./components/RoutesInfrastructure/components/LoadingScreen";
+import MainLayout from "./layout/MainLayout";
+import AuthGuard from "./components/RoutesInfrastructure/components/AuthGuard";
+import GuestGuard from "./components/RoutesInfrastructure/components/GuestGuard";
 
 const Loadable = (Component: any) => (props: JSX.IntrinsicAttributes) =>
   (
@@ -13,25 +13,35 @@ const Loadable = (Component: any) => (props: JSX.IntrinsicAttributes) =>
   );
 
 // *  AUTHENTICATION PAGES
-const Login = Loadable(lazy(() => import('./pages/authentication/Login')));
+const Login = Loadable(lazy(() => import("./pages/authentication/Login")));
 const Register = Loadable(
-  lazy(() => import('./pages/authentication/Register'))
+  lazy(() => import("./pages/authentication/Register"))
 );
 
 //  * HOME PAGE
-const Home = Loadable(lazy(() => import('./pages/home/Home')));
+const Home = Loadable(lazy(() => import("./pages/home/Home")));
 
 //  * OTHER PAGES
-const RickAndMorty = Loadable(lazy(() => import('./pages/RickAndMorty')));
-const Todo = Loadable(lazy(() => import('./pages/Todo')));
-const ExpoPlatformInterview = Loadable(lazy(() => import('./pages/ExpoPlatformInterview')));
+const RickAndMorty = Loadable(lazy(() => import("./pages/RickAndMorty")));
+const Todo = Loadable(lazy(() => import("./pages/Todo")));
+const ExpoPlatformInterview = Loadable(
+  lazy(() => import("./pages/ExpoPlatformInterview"))
+);
+const TypingChildren = Loadable(lazy(() => import("./pages/TypingChildren")));
+const AvangersQuiz = Loadable(lazy(() => import("./pages/AvangersQuiz")));
+const CharacterCard = Loadable(lazy(() => import("./pages/CharacterCard")));
+const Counter = Loadable(lazy(() => import("./pages/Counter")));
+const CounterWithHooks = Loadable(
+  lazy(() => import("./pages/CounterWithHooks"))
+);
+const DogFacts = Loadable(lazy(() => import("./pages/DogFacts")));
 
 const routes: RouteObject[] = [
   {
-    path: 'authentication',
+    path: "authentication",
     children: [
       {
-        path: 'login',
+        path: "login",
         element: (
           <GuestGuard>
             <Login />
@@ -39,17 +49,17 @@ const routes: RouteObject[] = [
         ),
       },
       {
-        path: 'register',
+        path: "register",
         element: (
           <GuestGuard>
-            <Register />{' '}
+            <Register />{" "}
           </GuestGuard>
         ),
       },
     ],
   },
   {
-    path: '*',
+    path: "*",
     element: <MainLayout />,
     children: [
       {
@@ -59,12 +69,12 @@ const routes: RouteObject[] = [
           //   <Home />
           // </AuthGuard>
           <GuestGuard>
-             <Home />
+            <Home />
           </GuestGuard>
         ),
       },
       {
-        path: 'rickAndMorty',
+        path: "rickAndMorty",
         element: (
           <GuestGuard>
             <RickAndMorty />
@@ -72,7 +82,7 @@ const routes: RouteObject[] = [
         ),
       },
       {
-        path: 'todo',
+        path: "todo",
         element: (
           <GuestGuard>
             <Todo />
@@ -80,13 +90,61 @@ const routes: RouteObject[] = [
         ),
       },
       {
-        path: 'expoPlatformInterview',
+        path: "expoPlatformInterview",
         element: (
           <GuestGuard>
             <ExpoPlatformInterview />
           </GuestGuard>
         ),
-      }
+      },
+      {
+        path: "typingChildren",
+        element: (
+          <GuestGuard>
+            <TypingChildren />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "avangersQuiz",
+        element: (
+          <GuestGuard>
+            <AvangersQuiz />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "characterCard",
+        element: (
+          <GuestGuard>
+            <CharacterCard />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "counter",
+        element: (
+          <GuestGuard>
+            <Counter />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "counterWithHooks",
+        element: (
+          <GuestGuard>
+            <CounterWithHooks />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "dogFacts",
+        element: (
+          <GuestGuard>
+            <DogFacts />
+          </GuestGuard>
+        ),
+      },
     ],
   },
 ];

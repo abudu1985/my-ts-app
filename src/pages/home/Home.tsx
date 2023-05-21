@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link} from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const HomeStyled = styled.div`
@@ -15,7 +15,7 @@ const HomeStyled = styled.div`
     justify-content: center;
     align-items: center;
   }
-   
+
   .home-center-content {
     display: flex;
     flex-wrap: wrap;
@@ -39,33 +39,59 @@ const HomeStyled = styled.div`
 
 const projectsLinks = [
   {
-    path: '/rickAndMorty',
-    name: 'RickAndMorty',
+    path: "/rickAndMorty",
+    name: "RickAndMorty",
   },
   {
-    path: '/todo',
-    name: 'Todo'
+    path: "/todo",
+    name: "Todo",
   },
   {
-    path: '/expoPlatformInterview',
-    name: 'ExpoPlatformInterview'
-  }
-]
+    path: "/expoPlatformInterview",
+    name: "ExpoPlatformInterview",
+  },
+  {
+    path: "/typingChildren",
+    name: "TypingChildren",
+  },
+  {
+    path: "/avangersQuiz",
+    name: "AvangersQuiz",
+  },
+  {
+    path: "/characterCard",
+    name: "CharacterCard",
+  },
+  {
+    path: "/counter",
+    name: "Counter",
+  },
+  {
+    path: "/counterWithHooks",
+    name: "CounterWithHooks",
+  },
+  {
+    path: "/dogFacts",
+    name: "DogFacts",
+  },
+];
 
 const Home = () => {
- return <HomeStyled>
-<div className=''></div>
-<div className='column1'>
-  <div className='home-center-content'>
-  {projectsLinks.map((item) => (
-    <Link  key={item?.path} to={item.path}  className='badge'>
-       {item?.name}
-       </Link>
+  return (
+    <HomeStyled>
+      <div className=""></div>
+      <div className="column1">
+        <div className="home-center-content">
+          {projectsLinks.map((item) => (
+            <Link key={item?.path} to={item.path} className="badge">
+              {item?.name}
+            </Link>
           ))}
-  </div>
-</div>
-<div className=''></div>
-  </HomeStyled>
+        </div>
+      </div>
+      <div className=""></div>
+    </HomeStyled>
+  );
 };
 
 export default Home;

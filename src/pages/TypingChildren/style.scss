@@ -1,0 +1,23 @@
+html,
+body,
+* {
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+main {
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  box-shadow: 3px 3px 10px #ccc;
+  max-width: 500px;
+  margin: auto;
+}
+
+.display-name {
+  p {
+    font-family: cursive;
+  }
+  font-size: 2em;
+  padding: 40px 0;
+}
