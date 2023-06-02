@@ -74,6 +74,30 @@ const projectsLinks = [
     path: "/dogFacts",
     name: "DogFacts",
   },
+  {
+    path: "pizzaCalculator",
+    name: "PizzaCalculator",
+  },
+  {
+    path: "colorSwatch",
+    name: "ColorSwatch",
+  },
+  {
+    path: "currentUser",
+    name: "CurrentUser",
+  },
+  {
+    path: "nameTagHoc",
+    name: "NameTagHoc",
+  },
+  {
+    path: "burritos",
+    name: "Burritos",
+  },
+  {
+    path: "formWithValidation",
+    name: "FormWithValidation",
+  },
 ];
 
 const Home = () => {

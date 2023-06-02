@@ -1,8 +1,8 @@
-import { CharacterType } from './characters';
-import { Table, TableRow } from './Table';
+import { CharacterType } from "./characters";
+import { Table, TableRow } from "./Table";
 
 export const CharacterInformation = ({
-  character
+  character,
 }: {
   character: CharacterType;
 }) => {

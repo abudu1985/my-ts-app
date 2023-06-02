@@ -35,6 +35,14 @@ const CounterWithHooks = Loadable(
   lazy(() => import("./pages/CounterWithHooks"))
 );
 const DogFacts = Loadable(lazy(() => import("./pages/DogFacts")));
+const PizzaCalculator = Loadable(lazy(() => import("./pages/PizzaCalculator")));
+const ColorSwatch = Loadable(lazy(() => import("./pages/ColorSwatch")));
+const CurrentUser = Loadable(lazy(() => import("./pages/CurrentUser")));
+const NameTagHoc = Loadable(lazy(() => import("./pages/NameTagHoc")));
+const Burritos = Loadable(lazy(() => import("./pages/Burritos")));
+const FormWithValidation = Loadable(
+  lazy(() => import("./pages/FormWithValidation"))
+);
 
 const routes: RouteObject[] = [
   {
@@ -142,6 +150,54 @@ const routes: RouteObject[] = [
         element: (
           <GuestGuard>
             <DogFacts />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "pizzaCalculator",
+        element: (
+          <GuestGuard>
+            <PizzaCalculator />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "colorSwatch",
+        element: (
+          <GuestGuard>
+            <ColorSwatch />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "currentUser",
+        element: (
+          <GuestGuard>
+            <CurrentUser />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "nameTagHoc",
+        element: (
+          <GuestGuard>
+            <NameTagHoc />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "burritos",
+        element: (
+          <GuestGuard>
+            <Burritos />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "formWithValidation",
+        element: (
+          <GuestGuard>
+            <FormWithValidation />
           </GuestGuard>
         ),
       },

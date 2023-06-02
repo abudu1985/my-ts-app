@@ -1,5 +1,5 @@
 import React from "react";
-import { EpisodeQuery } from "@/generated/graphql";
+import { EpisodeQuery } from "../../../../generated/graphql";
 import { AdditionalInfoComponentStyled } from "../styles";
 
 interface Props {
@@ -30,7 +30,9 @@ const EpisodeComponent: React.FC<Props> = ({ data }) => {
         </div>
         {data?.episode?.characters.length &&
           data?.episode?.characters.map((item) => (
-            <span key={item?.id} className="badge">{item?.name}</span>
+            <span key={item?.id} className="badge">
+              {item?.name}
+            </span>
           ))}
       </div>
     </AdditionalInfoComponentStyled>
