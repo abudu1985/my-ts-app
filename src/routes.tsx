@@ -43,6 +43,7 @@ const Burritos = Loadable(lazy(() => import("./pages/Burritos")));
 const FormWithValidation = Loadable(
   lazy(() => import("./pages/FormWithValidation"))
 );
+const SimpleModal = Loadable(lazy(() => import("./pages/SimpleModal")));
 
 const routes: RouteObject[] = [
   {
@@ -198,6 +199,14 @@ const routes: RouteObject[] = [
         element: (
           <GuestGuard>
             <FormWithValidation />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "simpleModal",
+        element: (
+          <GuestGuard>
+            <SimpleModal />
           </GuestGuard>
         ),
       },

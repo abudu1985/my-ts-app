@@ -29,11 +29,13 @@ const useForm = (initialValues, callback, validationInfo) => {
     const errorsObj = {};
     if (!validationInfo.size) return errorsObj;
 
-    const iteratedMap = fields.length
+    const iteratingMap = fields.length
+      // validate only by passed fields
       ? new Map([...validationInfo].filter(([key, v]) => fields.includes(key)))
+      // loop all fields
       : validationInfo;
 
-    for (let [key, functions] of iteratedMap.entries()) {
+    for (let [key, functions] of iteratingMap.entries()) {
       const error = functions
         .reduce((acc, func) => {
           acc.push(func({ value: values[key], allValues: values, key }));

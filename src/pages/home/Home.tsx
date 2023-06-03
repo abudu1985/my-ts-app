@@ -98,6 +98,10 @@ const projectsLinks = [
     path: "formWithValidation",
     name: "FormWithValidation",
   },
+  {
+    path: "simpleModal",
+    name: "SimpleModal",
+  },
 ];
 
 const Home = () => {
