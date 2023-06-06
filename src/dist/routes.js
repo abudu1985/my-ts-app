@@ -41,6 +41,7 @@ var NameTagHoc = Loadable(react_1.lazy(function () { return Promise.resolve().th
 var Burritos = Loadable(react_1.lazy(function () { return Promise.resolve().then(function () { return require("./pages/Burritos"); }); }));
 var FormWithValidation = Loadable(react_1.lazy(function () { return Promise.resolve().then(function () { return require("./pages/FormWithValidation"); }); }));
 var SimpleModal = Loadable(react_1.lazy(function () { return Promise.resolve().then(function () { return require("./pages/SimpleModal"); }); }));
+var MultipleSelect = Loadable(react_1.lazy(function () { return Promise.resolve().then(function () { return require("./pages/MultipleSelect"); }); }));
 var routes = [
     {
         path: "authentication",
@@ -150,6 +151,11 @@ var routes = [
                 path: "simpleModal",
                 element: (React.createElement(GuestGuard_1["default"], null,
                     React.createElement(SimpleModal, null)))
+            },
+            {
+                path: "multipleSelect",
+                element: (React.createElement(GuestGuard_1["default"], null,
+                    React.createElement(MultipleSelect, null)))
             },
         ]
     },

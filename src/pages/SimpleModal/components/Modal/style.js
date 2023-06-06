@@ -14,7 +14,7 @@ const ModalStyled = styled.div`
 
   .modalContainer {
     width: 500px;
-    height: 500px;
+    //  height: 500px;
     border-radius: 12px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -45,7 +45,8 @@ const ModalStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.7rem;
+    flex-direction: column;
+    //  font-size: 1.7rem;
     text-align: center;
   }
 

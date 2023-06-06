@@ -44,6 +44,7 @@ const FormWithValidation = Loadable(
   lazy(() => import("./pages/FormWithValidation"))
 );
 const SimpleModal = Loadable(lazy(() => import("./pages/SimpleModal")));
+const MultipleSelect = Loadable(lazy(() => import("./pages/MultipleSelect")));
 
 const routes: RouteObject[] = [
   {
@@ -207,6 +208,14 @@ const routes: RouteObject[] = [
         element: (
           <GuestGuard>
             <SimpleModal />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "multipleSelect",
+        element: (
+          <GuestGuard>
+            <MultipleSelect />
           </GuestGuard>
         ),
       },

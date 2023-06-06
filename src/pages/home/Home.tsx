@@ -102,6 +102,10 @@ const projectsLinks = [
     path: "simpleModal",
     name: "SimpleModal",
   },
+  {
+    path: "multipleSelect",
+    name: "MultipleSelect",
+  },
 ];
 
 const Home = () => {
