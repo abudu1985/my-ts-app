@@ -16,12 +16,20 @@ li {
   align-items: center;
 }
 
-.strike {
-  text-decoration: line-through;
+.todo-list-text-block {
+  inline-size: 60%;
+  overflow-wrap: break-word;
+  hyphens: manual;
 }
 
 .todo-list-action-block {
-  width: 200px;
+  width: 35%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.strike {
+  text-decoration: line-through;
 }

@@ -13,7 +13,11 @@ const TodoList: React.FC<TodoListProps> = (props) => {
     <ul>
       {props.items.map((todo) => (
         <li key={todo.id}>
-          <div className={!todo.active ? "strike" : ""}>{todo.text}</div>
+          <div
+            className={`todo-list-text-block ${!todo.active ? "strike" : ""}`}
+          >
+            {todo.text}
+          </div>
           <div className="todo-list-action-block">
             <button onClick={props.onToggleTodo.bind(null, todo.id)}>
               DONE
