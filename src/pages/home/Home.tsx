@@ -106,6 +106,10 @@ const projectsLinks = [
     path: "multipleSelect",
     name: "MultipleSelect",
   },
+  {
+    path: "responsiveTable",
+    name: "ResponsiveTable"
+},
 ];
 
 const Home = () => {

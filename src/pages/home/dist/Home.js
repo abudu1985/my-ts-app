@@ -77,6 +77,10 @@ var projectsLinks = [
         path: "multipleSelect",
         name: "MultipleSelect"
     },
+    {
+        path: "responsiveTable",
+        name: "ResponsiveTable"
+    },
 ];
 var Home = function () {
     return (react_1["default"].createElement(HomeStyled, null,

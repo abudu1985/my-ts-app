@@ -45,6 +45,7 @@ const FormWithValidation = Loadable(
 );
 const SimpleModal = Loadable(lazy(() => import("./pages/SimpleModal")));
 const MultipleSelect = Loadable(lazy(() => import("./pages/MultipleSelect")));
+const ResponsiveTable = Loadable(lazy(() => import("./pages/ResponsiveTable")));
 
 const routes: RouteObject[] = [
   {
@@ -216,6 +217,14 @@ const routes: RouteObject[] = [
         element: (
           <GuestGuard>
             <MultipleSelect />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: "responsiveTable",
+        element: (
+          <GuestGuard>
+            <ResponsiveTable />
           </GuestGuard>
         ),
       },
